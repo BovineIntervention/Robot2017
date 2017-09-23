@@ -5,9 +5,6 @@ import org.usfirst.frc.team686.robot2017.lib.util.PathSegment;
 import org.usfirst.frc.team686.robot2017.lib.util.Pose;
 import org.usfirst.frc.team686.robot2017.lib.util.Util;
 import org.usfirst.frc.team686.robot2017.lib.util.Path.Waypoint;
-
-import edu.wpi.first.wpilibj.Timer;
-
 import org.usfirst.frc.team686.robot2017.lib.util.Vector2d;
 
 import java.util.Arrays;
@@ -17,7 +14,6 @@ import org.usfirst.frc.team686.robot2017.Constants;
 import org.usfirst.frc.team686.robot2017.auto.AutoModeBase;
 import org.usfirst.frc.team686.robot2017.auto.AutoModeEndedException;
 import org.usfirst.frc.team686.robot2017.auto.actions.*;
-import org.usfirst.frc.team686.robot2017.command_status.RobotState;
 
 
 
@@ -35,6 +31,7 @@ public class StartToHopperToBoilerMode extends AutoModeBase
     {
     	isBlue = _isBlue;
     	fieldDimensions = _fieldDimensions;
+		initialPose = fieldDimensions.getBoilerStartPose();
     }
     
     private void init()
@@ -44,14 +41,8 @@ public class StartToHopperToBoilerMode extends AutoModeBase
 
 
 		// get positions, based on red/blue alliance
-		Pose initialPose = fieldDimensions.getBoilerStartPose();
 		Vector2d initialPosition = initialPose.getPosition();
 		double initialHeading = initialPose.getHeading();
-		        
-        
-		RobotState robotState = RobotState.getInstance();
-		robotState.reset(Timer.getFPGATimestamp(), 0, 0, initialPose);
-
 		
 		Pose hopperPose = fieldDimensions.getBoilerHopperPose();
 		Vector2d hopperPosition = hopperPose.getPosition();

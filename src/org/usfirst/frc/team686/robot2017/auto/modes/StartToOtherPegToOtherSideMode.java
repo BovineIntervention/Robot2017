@@ -43,16 +43,9 @@ public class StartToOtherPegToOtherSideMode extends AutoModeBase
     	PathSegment.Options visionOptions = new PathSegment.Options(Constants.kVisionMaxVel,        Constants.kVisionMaxAccel,        Constants.kPathFollowingLookahead, true);
 
 		// get positions, based on red/blue alliance
-		Pose initialPose = fieldDimensions.getOtherStartPose();
 		Vector2d initialPosition = initialPose.getPosition();
 		double initialHeading = initialPose.getHeading();
-		        
-		
-        
-		RobotState robotState = RobotState.getInstance();
-		robotState.reset(Timer.getFPGATimestamp(), 0, 0, initialPose);
-		
-
+		       
 		Pose pegPose = fieldDimensions.getOtherPegBasePose();
 		Vector2d pegPosition = pegPose.getPosition();
 		double pegHeading = pegPose.getHeading();

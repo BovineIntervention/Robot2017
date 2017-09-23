@@ -3,11 +3,9 @@ package org.usfirst.frc.team686.robot2017.auto.modes;
 import org.usfirst.frc.team686.robot2017.lib.util.Path;
 import org.usfirst.frc.team686.robot2017.lib.util.PathSegment;
 import org.usfirst.frc.team686.robot2017.lib.util.Pose;
+import org.usfirst.frc.team686.robot2017.lib.util.Vector2d;
 import org.usfirst.frc.team686.robot2017.lib.util.Path.Waypoint;
 
-import edu.wpi.first.wpilibj.Timer;
-
-import org.usfirst.frc.team686.robot2017.lib.util.Vector2d;
 
 import java.util.Arrays;
 
@@ -15,7 +13,6 @@ import org.usfirst.frc.team686.robot2017.Constants;
 import org.usfirst.frc.team686.robot2017.auto.AutoModeBase;
 import org.usfirst.frc.team686.robot2017.auto.AutoModeEndedException;
 import org.usfirst.frc.team686.robot2017.auto.actions.*;
-import org.usfirst.frc.team686.robot2017.command_status.RobotState;
 
 
 
@@ -34,6 +31,7 @@ public class StartToCenterPegToBoilerMode extends AutoModeBase
     {
     	isBlue = _isBlue;
     	fieldDimensions = _fieldDimensions;
+       	initialPose = fieldDimensions.getCenterStartPose();
     }
     
     private void init()
@@ -44,14 +42,8 @@ public class StartToCenterPegToBoilerMode extends AutoModeBase
 
 
 		// get positions, based on red/blue alliance
-    	Pose initialPose = fieldDimensions.getCenterStartPose();
-		Vector2d initialPosition = initialPose.getPosition();
+ 		Vector2d initialPosition = initialPose.getPosition();
 		double initialHeading = initialPose.getHeading();
-
-        
-		RobotState robotState = RobotState.getInstance();
-		robotState.reset(Timer.getFPGATimestamp(), 0, 0, initialPose);
-		
 		
     	Pose pegPose = fieldDimensions.getCenterPegBasePose();
 		Vector2d pegPosition = pegPose.getPosition();

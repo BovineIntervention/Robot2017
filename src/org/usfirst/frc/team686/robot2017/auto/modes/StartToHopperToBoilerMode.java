@@ -54,7 +54,7 @@ public class StartToHopperToBoilerMode extends AutoModeBase
 		
 		// where to turn towards hopper
 		Vector2d hopperTurnPosition1 = new Vector2d(100,  -70);
-		Vector2d hopperTurnPosition2 = new Vector2d(150, -100);
+		Vector2d hopperTurnPosition2 = new Vector2d(170, -100);
 		if (isBlue)
 		{
 			// negate y coordinate
